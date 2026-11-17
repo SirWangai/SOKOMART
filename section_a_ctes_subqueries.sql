@@ -1,5 +1,16 @@
--- q1. big spenders of 2025 (cte + scalar subquery)
--- result
+set search_path to sokomart;
+
+show search_path;
+
+
+-- =============================================================
+-- SECTION A: CTEs and subqueries
+-- =============================================================
+
+-- =============================================================
+-- Q1. Big spenders of 2025 (CTE + scalar subquery)
+-- Result: 1432 rows (screenshot: screenshots/q01_big_spenders_2025.png)
+-- =============================================================
 with customer_2025_revenue as (
     select 
         c.customer_id,
@@ -24,9 +35,7 @@ from customer_2025_revenue
 where total_spent_2025 > (select avg(total_spent_2025) from customer_2025_revenue)
 order by total_spent_2025 desc;
 
--- q1 second query: counts and averages
--- result:
-
+-- Q1 second query: counts and averages
 with customer_2025_revenue as (
     select c.customer_id, sum(i.line_total) as total_spent_2025
     from customers c
@@ -43,22 +52,23 @@ select
 from customer_2025_revenue;
 
 
--- q2. premium-priced products (correlated subquery)
--- result:
+-- =============================================================
+-- Q2. Premium-priced products (correlated subquery)
+-- Result: 104 rows (screenshot: screenshots/q02_premium_products.png)
+-- =============================================================
 select 
     product_id,
     product_name,
     category,
     unit_price,
-    (select avg(unit_price) from products p2 where p2.category = p1.category) as category_avg_price,
-    unit_price - (select avg(unit_price) from products p2 where p2.category = p1.category) as price_gap
+    ROUND((select avg(unit_price) from products p2 where p2.category = p1.category), 2) as category_avg_price,
+    ROUND(unit_price - (select avg(unit_price) from products p2 where p2.category = p1.category), 2) as price_gap
 from products p1
 where product_status = 'active'
   and unit_price > (select avg(unit_price) from products p2 where p2.category = p1.category)
 order by category, price_gap desc;
 
--- q2 second query: count per category
--- result:
+-- Q2 second query: count per category
 select 
     category,
     count(*) as premium_product_count
@@ -69,9 +79,10 @@ group by category
 order by category;
 
 
--- q3. 2026 monthly profit and loss (chained ctes)
--- result: 10 rows
-
+-- =============================================================
+-- Q3. 2026 monthly profit and loss (chained CTEs)
+-- Result: 10 rows (screenshot: screenshots/q03_monthly_pl_2026.png)
+-- =============================================================
 with order_lines_2026 as (
     select 
         date_trunc('month', o.order_date) as month,
@@ -109,8 +120,10 @@ from monthly_profit
 order by month;
 
 
--- q4. cross-category shoppers in nakuru (derived table)
--- result: [row count] rows
+-- =============================================================
+-- Q4. Cross-category shoppers in Nakuru (derived table)
+-- Result: 346 rows (screenshot: screenshots/q04_nakuru_cross_category.png)
+-- =============================================================
 select 
     c.customer_id,
     c.first_name || ' ' || c.last_name as full_name,
@@ -133,9 +146,7 @@ where c.county = 'Nakuru'
   and sub.category_count >= 3
 order by sub.category_count desc, sub.total_spent desc;
 
--- q4 second query: counts
--- result:
-
+-- Q4 second query: counts
 select 
     count(*) as qualifying_nakuru_customers,
     count(*) filter (where sub.category_count = 5) as bought_all_5_categories
@@ -152,3 +163,21 @@ where c.county = 'Nakuru'
   and sub.category_count >= 3;
 
 
+-- =============================================================
+-- Q5. Products nobody has ordered (NOT EXISTS)
+-- Result: 24 rows (screenshot: screenshots/q05_unordered_products.png)
+-- =============================================================
+select 
+    product_id,
+    product_name,
+    category,
+    product_status,
+    stock_quantity,
+    created_at
+from products p
+where not exists (
+    select 1 
+    from order_items i 
+    where i.product_id = p.product_id
+)
+order by category, product_name;

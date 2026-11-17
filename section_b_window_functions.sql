@@ -1,25 +1,15 @@
--- q5. products nobody has ordered (not exists)
--- result: [row count] rows
+set search_path to sokomart;
 
-select 
-    product_id,
-    product_name,
-    category,
-    product_status,
-    stock_quantity,
-    created_at
-from products p
-where not exists (
-    select 1 
-    from order_items i 
-    where i.product_id = p.product_id
-)
-order by category, product_name;
+show search_path;
 
+-- =============================================================
+-- SECTION B: Window functions
+-- =============================================================
 
--- q6. county leaderboards (dense_rank)
--- result:
-
+-- =============================================================
+-- Q6. County leaderboards (DENSE_RANK)
+-- Result: 42 rows (screenshot: screenshots/q06_county_leaderboards.png)
+-- =============================================================
 with customer_lifetime as (
     select 
         c.county, 
@@ -52,9 +42,10 @@ where county_rank <= 3
 order by county, county_rank, customer_id;
 
 
--- q7. best sellers per category, 2025 (row_number)
--- result: 15 rows (screenshot: screenshots/q07_best_sellers_2025.png)
-
+-- =============================================================
+-- Q7. Best sellers per category, 2025 (ROW_NUMBER)
+-- Result: 15 rows (screenshot: screenshots/q07_best_sellers_2025.png)
+-- =============================================================
 with product_sales_2025 as (
     select 
         p.category, 
@@ -91,10 +82,10 @@ where rank_in_category <= 3
 order by category, rank_in_category;
 
 
-
--- q8. month-over-month growth (lag)
--- result: 22 rows (screenshot: screenshots/q08_mom_growth.png)
-
+-- =============================================================
+-- Q8. Month-over-month growth (LAG)
+-- Result: 22 rows (screenshot: screenshots/q08_mom_growth.png)
+-- =============================================================
 with monthly_revenue as (
     select 
         date_trunc('month', o.order_date) as month_val, 
@@ -120,10 +111,10 @@ from lagged_revenue
 order by month;
 
 
-
--- q9. is each order bigger than the last? (lag with partition)
--- result: [row count] rows (screenshot: screenshots/q09_nyeri_order_trends.png)
-
+-- =============================================================
+-- Q9. Is each order bigger than the last? (LAG with partition)
+-- Result: 1332 rows (screenshot: screenshots/q09_nyeri_order_trends.png)
+-- =============================================================
 with nyeri_orders as (
     select 
         o.customer_id, 
@@ -166,7 +157,7 @@ calculated_directions as (
 select * from calculated_directions
 order by customer_id, order_date;
 
--- q9 second query: summary counts
+-- Q9 second query: summary counts
 with nyeri_orders as (
     select 
         o.customer_id, 
@@ -196,10 +187,10 @@ select
 from lagged_orders;
 
 
-
--- q10. year-to-date revenue (sum over partition with explicit frame)
--- result: 22 rows (screenshot: screenshots/q10_ytd_revenue.png)
-
+-- =============================================================
+-- Q10. Year-to-date revenue (SUM over partition with explicit frame)
+-- Result: 22 rows (screenshot: screenshots/q10_ytd_revenue.png)
+-- =============================================================
 with monthly_totals as (
     select 
         cast(extract(year from o.order_date) as integer) as year,
