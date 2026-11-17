@@ -9,7 +9,7 @@ show search_path;
 
 -- =============================================================
 -- Q1. Big spenders of 2025 (CTE + scalar subquery)
--- Result: 1432 rows (screenshot: screenshots/q01_big_spenders_2025.png)
+-- Result: 1432 rows (screenshot: screenshots/q01_big_spenders.png)
 -- =============================================================
 with customer_2025_revenue as (
     select 

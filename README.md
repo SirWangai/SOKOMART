@@ -107,35 +107,35 @@ In DBeaver or pgAdmin, run these one at a time, or the editor will stop at the f
 
 ## Results
 
-The row counts below are the ones written in the header of each question in the SQL files. Every screenshot is in the `screenshots` folder.
+The row counts below are the ones written in the header of each question in the SQL files. Every screenshot is in the `Screenshots` folder.
 
 | Q | File | Rows | Screenshot |
 |---|---|---|---|
-| 1 | `section_a_ctes_subqueries.sql` | 1432 | [q01](screenshots/q01_big_spenders_2025.png) |
-| 2 | `section_a_ctes_subqueries.sql` | 104 | [q02](screenshots/q02_premium_products.png) |
-| 3 | `section_a_ctes_subqueries.sql` | 10 | [q03](screenshots/q03_monthly_pl_2026.png) |
-| 4 | `section_a_ctes_subqueries.sql` | 346 | [q04](screenshots/q04_nakuru_cross_category.png) |
-| 5 | `section_a_ctes_subqueries.sql` | 24 | [q05](screenshots/q05_unordered_products.png) |
-| 6 | `section_b_window_functions.sql` | 42 | [q06](screenshots/q06_county_leaderboards.png) |
-| 7 | `section_b_window_functions.sql` | 15 | [q07](screenshots/q07_best_sellers_2025.png) |
-| 8 | `section_b_window_functions.sql` | 22 | [q08](screenshots/q08_mom_growth.png) |
-| 9 | `section_b_window_functions.sql` | 1332 | [q09](screenshots/q09_nyeri_order_trends.png) |
-| 10 | `section_b_window_functions.sql` | 22 | [q10](screenshots/q10_ytd_revenue.png) |
-| 11 | `section_c_advanced_aggregation.sql` | 4 | [q11](screenshots/q11_customer_tiers.png) |
-| 12 | `section_c_advanced_aggregation.sql` | 152 | [q12](screenshots/q12_mombasa_october.png) |
-| 13 | `section_c_advanced_aggregation.sql` | 4 | [q13](screenshots/q13_payment_health.png) |
-| 14 | `section_c_advanced_aggregation.sql` | 2 | [q14](screenshots/q14_profit_departments.png) |
-| 15 | `section_c_advanced_aggregation.sql` | 36 | [q15](screenshots/q15_sales_subtotals.png) |
-| 16 | `section_d_views_functions_procedures.sql` | 10 (Kiambu) / 1 (view count) / 5 (December 2025) | [q16](screenshots/q16_views.png) |
-| 17 | `section_d_views_functions_procedures.sql` | multiple outputs | [q17](screenshots/q17_function_spend.png) |
-| 18 | `section_d_views_functions_procedures.sql` | 1 (before) / 1 (after) | [q18](screenshots/q18_price_change.png) |
-| 19 | `section_d_views_functions_procedures.sql` | multiple outputs | [q19](screenshots/q19_trigger_audit.png) |
-| 20 | `section_d_views_functions_procedures.sql` | multiple outputs | [q20](screenshots/q20_atomic_order.png) |
-| 21 | `section_e_optimisation_transactions.sql` | 91 | [q21](screenshots/q21_query_plan.png) |
-| 22 | `section_e_optimisation_transactions.sql` | multiple plans | [q22](screenshots/q22_indexes.png) |
-| 23 | `section_e_optimisation_transactions.sql` | multiple outputs | [q23](screenshots/q23_transactions.png) |
-| 24 | `section_e_optimisation_transactions.sql` | multiple outputs | [q24](screenshots/q24_dedup_payments.png) |
-| 25 | `section_e_optimisation_transactions.sql` | 10 | [q25](screenshots/q25_three_months.png) |
+| 1 | `section_a_ctes_subqueries.sql` | 1432 | [q01](Screenshots/q01_big_spenders.png) |
+| 2 | `section_a_ctes_subqueries.sql` | 104 | [q02](Screenshots/q02_premium_products.png) |
+| 3 | `section_a_ctes_subqueries.sql` | 10 | [q03](Screenshots/q03_monthly_pl_2026.png) |
+| 4 | `section_a_ctes_subqueries.sql` | 346 | [q04](Screenshots/q04_nakuru_cross_category.png) |
+| 5 | `section_a_ctes_subqueries.sql` | 24 | [q05](Screenshots/q05_unordered_products.png) |
+| 6 | `section_b_window_functions.sql` | 42 | [q06](Screenshots/q06_county_leaderboards.png) |
+| 7 | `section_b_window_functions.sql` | 15 | [q07](Screenshots/q07_best_sellers_2025.png) |
+| 8 | `section_b_window_functions.sql` | 22 | [q08](Screenshots/q08_mom_growth.png) |
+| 9 | `section_b_window_functions.sql` | 1332 | [q09](Screenshots/q09_nyeri_order_trends.png) |
+| 10 | `section_b_window_functions.sql` | 22 | [q10](Screenshots/q10_ytd_revenue.png) |
+| 11 | `section_c_advanced_aggregation.sql` | 4 | [q11](Screenshots/q11_customer_tiers.png) |
+| 12 | `section_c_advanced_aggregation.sql` | 152 | [q12](Screenshots/q12_mombasa_october.png) |
+| 13 | `section_c_advanced_aggregation.sql` | 4 | [q13](Screenshots/q13_payment_health.png) |
+| 14 | `section_c_advanced_aggregation.sql` | 2 | [q14](Screenshots/q14_profit_departments.png) |
+| 15 | `section_c_advanced_aggregation.sql` | 36 | [q15](Screenshots/q15_sales_subtotals.png) |
+| 16 | `section_d_views_functions_procedures.sql` | 10 (Kiambu) / 1 (view count) / 5 (December 2025) | [q16](Screenshots/q16_views.png) |
+| 17 | `section_d_views_functions_procedures.sql` | multiple outputs | [q17](Screenshots/q17_function_spend.png) |
+| 18 | `section_d_views_functions_procedures.sql` | 1 (before) / 1 (after) | [q18](Screenshots/q18_price_change.png) |
+| 19 | `section_d_views_functions_procedures.sql` | multiple outputs | [q19](Screenshots/q19_trigger_audit.png) |
+| 20 | `section_d_views_functions_procedures.sql` | multiple outputs | [q20](Screenshots/q20_atomic_order.png) |
+| 21 | `section_e_optimisation_transactions.sql` | 91 | [q21](Screenshots/q21_query_plan.png) |
+| 22 | `section_e_optimisation_transactions.sql` | multiple plans | [q22](Screenshots/q22_indexes.png), [index size](Screenshots/q22_index_size.png) |
+| 23 | `section_e_optimisation_transactions.sql` | multiple outputs | [q23](Screenshots/q23_transactions.png) |
+| 24 | `section_e_optimisation_transactions.sql` | multiple outputs | [q24](Screenshots/q24_dedup_payments.png) |
+| 25 | `section_e_optimisation_transactions.sql` | 10 | [q25](Screenshots/q25_three_months.png) |
 
 ---
 
